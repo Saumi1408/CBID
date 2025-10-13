@@ -1,0 +1,5 @@
+{
+  "name": "CodeBid",
+  "description": "A modern web application for the CodeBid event, featuring a dashboard for bidding, auctions, and a leaderboard.",
+  "requestFramePermissions": []
+}
