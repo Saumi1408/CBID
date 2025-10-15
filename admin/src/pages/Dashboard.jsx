@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { collection, onSnapshot, doc, updateDoc } from "firebase/firestore";
-import { database } from "../../../firebaseconfig";
+//import { database } from "../../../firebaseconfig";
 
 //  get highest bid per question
 function getWinners(participants) {
@@ -22,19 +22,19 @@ export default function Dashboard({ sendMessage }) {
   const [wonTeams, setWonTeams] = useState({}); // ✅ to mark “Bid Won”
   const intervalRef = useRef(null);
 
-  // Real-time Firestore listener
-  useEffect(() => {
-    const bidsRef = collection(database, "bids");
-    const unsubscribe = onSnapshot(bidsRef, (snapshot) => {
-      const allBids = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setParticipants(allBids);
-    });
+  // // Real-time Firestore listener
+  // useEffect(() => {
+  //   const bidsRef = collection(database, "bids");
+  //   const unsubscribe = onSnapshot(bidsRef, (snapshot) => {
+  //     const allBids = snapshot.docs.map(doc => ({
+  //       id: doc.id,
+  //       ...doc.data(),
+  //     }));
+  //     setParticipants(allBids);
+  //   });
 
-    return () => unsubscribe();
-  }, []);
+  //   return () => unsubscribe();
+  // }, []);
 
   // Auto-scroll between participants
   useEffect(() => {
