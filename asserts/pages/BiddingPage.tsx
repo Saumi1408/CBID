@@ -3,13 +3,31 @@ import { Question } from '../../types';
 import WarningIcon from '../icons/WarningIcon';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { storeBidData } from '../../App';
-import { database } from '../../firebaseconfig';
+import { database } from '../firebaseconfig';
 
 const dummyQuestions: Question[] = [
-  { id: 'q1', title: 'Binary Search Algorithm', description: 'Implement an efficient binary search algorithm that finds the target element in a sorted array', difficulty: 'medium', startingBid: 1000, status: 'Active for bidding', endDate: '10/8/2025', bids: 0 },
-  { id: 'q2', title: 'Graph Traversal', description: 'Implement a function to traverse a graph using Breadth-First Search (BFS) starting from a given node.', difficulty: 'hard', startingBid: 1500, status: 'Active for bidding', endDate: '10/9/2025', bids: 3 },
-  { id: 'q3', title: 'API Rate Limiter', description: 'Design and implement a middleware for an API that limits the number of requests a user can make in a given time frame.', difficulty: 'hard', startingBid: 2000, status: 'Active for bidding', endDate: '10/10/2025', bids: 1 },
+  { id: 'q1', title: 'Two Sum', description: 'Find indices of the two numbers that add up to a specific target.', difficulty: 'easy', startingBid: 500, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q2', title: 'Spiral Matrix', description: 'Print the elements of a matrix in spiral order.', difficulty: 'medium', startingBid: 1000, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q3', title: 'Insertion Sort', description: 'Implement insertion sort algorithm to sort an array of numbers.', difficulty: 'easy', startingBid: 400, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q4', title: 'Palindrome Number', description: 'Determine whether an integer is a palindrome.', difficulty: 'easy', startingBid: 300, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q5', title: 'Linked List Odd Even', description: 'Rearrange a linked list such that all odd nodes come before even nodes.', difficulty: 'medium', startingBid: 800, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q6', title: 'Maximum Product Subarray', description: 'Find the contiguous subarray within an array which has the largest product.', difficulty: 'medium', startingBid: 1200, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q7', title: 'Best Time to Sell and Buy Stocks', description: 'Find the maximum profit from buying and selling stocks once.', difficulty: 'easy', startingBid: 500, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q8', title: 'Palindrome in Linked List', description: 'Check whether a linked list forms a palindrome.', difficulty: 'medium', startingBid: 1000, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q9', title: 'Binary Search', description: 'Implement an efficient binary search algorithm on a sorted array.', difficulty: 'easy', startingBid: 600, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q10', title: 'Median of Two Sorted Arrays', description: 'Find the median of two sorted arrays efficiently.', difficulty: 'hard', startingBid: 2000, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q11', title: 'Find Peak Element', description: 'Find a peak element in an array where neighbors are smaller.', difficulty: 'easy', startingBid: 500, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q12', title: 'Happy Number', description: 'Determine if a number is a happy number.', difficulty: 'easy', startingBid: 400, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q13', title: 'Reverse Words in a String', description: 'Reverse the order of words in a string.', difficulty: 'medium', startingBid: 900, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q14', title: 'Reverse Integer', description: 'Reverse digits of an integer and handle overflow.', difficulty: 'medium', startingBid: 800, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q15', title: 'Pascal Triangle / Some Pattern', description: 'Print Pascal Triangle or a specific numeric pattern.', difficulty: 'easy', startingBid: 500, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q16', title: 'Largest Rectangle in Histogram', description: 'Find the largest rectangle in a histogram.', difficulty: 'hard', startingBid: 1800, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q17', title: 'Climbing Stairs', description: 'Count the number of ways to climb stairs taking 1 or 2 steps.', difficulty: 'easy', startingBid: 400, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q18', title: 'Merge Sorted Array', description: 'Merge two sorted arrays into one sorted array.', difficulty: 'easy', startingBid: 500, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q19', title: 'Bubble Sort', description: 'Implement bubble sort algorithm.', difficulty: 'easy', startingBid: 400, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
+  { id: 'q20', title: 'Pre Order Traversal of Array', description: 'Perform pre-order traversal on a tree represented as an array.', difficulty: 'easy', startingBid: 600, status: 'Active for bidding', endDate: '10/16/2025', bids: 0 },
 ];
+
 
 interface FirestoreBid {
   id: string;

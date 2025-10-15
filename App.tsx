@@ -6,7 +6,7 @@ import { Page } from './types';
 import SparkleBackground from './asserts/SparkleBackground';
 import MoneyFlowBackground from './asserts/MoneyFlowBackground';
 // Import the database from your firebaseconfig file
-import { database } from './firebaseconfig';
+import { database } from './asserts/firebaseconfig';
 
 import {collection,addDoc} from 'firebase/firestore';
 

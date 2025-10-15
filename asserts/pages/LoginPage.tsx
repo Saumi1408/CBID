@@ -13,36 +13,41 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!teamName) return;
-    setLoading(true);
-    setError(null);
+  e.preventDefault();
+  if (!teamName) return;
+  setLoading(true);
+  setError(null);
 
-    // Fetch and parse the CSV
-    try {
-      const response = await fetch('/respones.csv');
-      const csvText = await response.text();
-      Papa.parse(csvText, {
-        header: true,
-  complete: (results: any) => {
-          const teams = results.data.map((row: any) => (row["Team Name"] || '').trim().toLowerCase());
-          if (teams.includes(teamName.trim().toLowerCase())) {
-            onLogin(teamName);
-          } else {
-            setError('Team name not found. Please check your entry.');
-          }
-          setLoading(false);
-        },
-        error: () => {
-          setError('Failed to read CSV.');
-          setLoading(false);
+  try {
+    const response = await fetch('/respones.csv');
+    if (!response.ok) throw new Error('CSV not found');
+    const csvText = await response.text();
+
+    Papa.parse(csvText, {
+      header: true,
+      complete: (results: any) => {
+        const teams = results.data
+          .map((row: any) => (row["Team Name"] || '').trim().toLowerCase())
+          .filter(Boolean);
+        if (teams.includes(teamName.trim().toLowerCase())) {
+          onLogin(teamName);
+        } else {
+          setError('Team name not found. Please check your entry.');
+          //onLogin(teamName);
         }
-      });
-    } catch {
-      setError('Failed to fetch CSV.');
-      setLoading(false);
-    }
-  };
+        setLoading(false);
+      },
+      error: () => {
+        setError('Failed to read CSV.');
+        setLoading(false);
+      }
+    });
+  } catch {
+    setError('Failed to fetch CSV.');
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="w-full max-w-md p-8 space-y-8 bg-black/20 backdrop-blur-lg rounded-2xl shadow-2xl border border-slate-700/50 animate-fade-in-up">

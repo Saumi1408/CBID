@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '.'), // adjust to your structure
+      '@': path.resolve(__dirname, './assert'), // adjust to your structure
     },
   },
   build: {
