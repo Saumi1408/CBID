@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "codebid-2d32f"
+  },
+  "targets": {
+    "codebid-2d32f": {
+      "hosting": {
+        "codebid": [
+          "codebid-2d32f"
+        ],
+        "admin": [
+          "codebid-admin"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

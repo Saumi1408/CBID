@@ -1,0 +1,52 @@
+type User @table {
+  username: String!
+  email: String!
+  createdAt: Timestamp!
+  displayName: String
+  bio: String
+  profilePictureUrl: String
+  rating: Float
+}
+
+type Problem @table {
+  title: String!
+  description: String!
+  budget: Float!
+  deadline: Timestamp!
+  status: String!
+  createdAt: Timestamp!
+  poster: User
+  tags: [String]
+  attachmentsUrl: String
+}
+
+type Bid @table {
+  proposedPrice: Float!
+  estimatedCompletionDays: Int!
+  message: String!
+  status: String!
+  createdAt: Timestamp!
+  bidder: User
+  problem: Problem
+  solutionProposal: String
+}
+
+type Notification @table {
+  message: String!
+  type: String!
+  isRead: Boolean!
+  createdAt: Timestamp!
+  user: User
+  relatedProblemId: UUID
+  relatedBidId: UUID
+}
+
+type Review @table {
+  rating: Int!
+  comment: String!
+  createdAt: Timestamp!
+  reviewType: String!
+  reviewer: User
+  reviewedUser: User
+  problem: Problem
+}
