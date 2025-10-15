@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import LoginPage from './components/pages/LoginPage';
-import OnboardingPage from './components/pages/OnboardingPage';
-import MainLayout from './components/layout/MainLayout';
+import LoginPage from './asserts/pages/LoginPage';
+import OnboardingPage from './asserts/pages/OnboardingPage';
+import MainLayout from './asserts/layout/MainLayout';
 import { Page } from './types';
-import SparkleBackground from './components/SparkleBackground';
-import MoneyFlowBackground from './components/MoneyFlowBackground';
+import SparkleBackground from './asserts/SparkleBackground';
+import MoneyFlowBackground from './asserts/MoneyFlowBackground';
 // Import the database from your firebaseconfig file
 import { database } from './firebaseconfig';
 

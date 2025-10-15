@@ -64,7 +64,7 @@ const LeaderboardCard: React.FC<LeaderboardCardProps> = ({ user, index }) => {
       
       {/* User Info */}
       <div className="col-span-11 md:col-span-5 flex items-center space-x-4">
-        <HexagonAvatar avatarUrl={user.avatarUrl} rank={user.rank} />
+        {/* <HexagonAvatar avatarUrl={user.avatarUrl} rank={user.rank} /> */}
         <div className="relative">
           {user.rank === 1 && (
             <div className="absolute -top-5 -left-1 w-5 h-5 text-yellow-400" style={{ filter: 'drop-shadow(0 0 5px rgba(250, 204, 21, 0.7))' }}>

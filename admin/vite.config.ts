@@ -3,20 +3,15 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  base: './', // ✅ this is CRUCIAL for Firebase or any subpath hosting
+  base: './', // ensures assets load correctly in Firebase hosting
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '.'), // adjust to your structure
+      '@': path.resolve(__dirname, '/assert'), // adjust if you have components in another folder
     },
   },
-  build: {
-    outDir: 'dist',
-    emptyOutDir: true,
-  },
   server: {
-    port: 3000,
+    port: 3001, // optional: different from main app
     host: '0.0.0.0',
   },
 });
-

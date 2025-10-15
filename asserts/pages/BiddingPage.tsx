@@ -45,7 +45,7 @@ useEffect(() => {
       if (closedBid) {
         // 🧠 Only the team that actually won sees the "You have won" message
         if (closedBid.teamName === teamName) {
-          status = '🎉 You have won the bid!';
+          status = 'bidding🎉 You have won the bid!';
         } else {
           status = 'Bidding Closed-you have lost the bid';
         }

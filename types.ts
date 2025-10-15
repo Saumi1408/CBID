@@ -20,6 +20,7 @@ export interface User {
   bidsPlaced: number;
   winRate: number;
   streak: number;
+  
 }
 export interface Question {
   id: string;
