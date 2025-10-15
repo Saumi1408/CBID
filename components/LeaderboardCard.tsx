@@ -83,7 +83,7 @@ const LeaderboardCard: React.FC<LeaderboardCardProps> = ({ user, index }) => {
       {/* Stats */}
       <div className="col-span-12 md:col-span-6 mt-4 md:mt-0 grid grid-cols-2 gap-x-4 gap-y-2 pl-4 md:pl-0 border-l-2 md:border-l-0 border-slate-800">
         <StatItem icon={<BiddingIcon />} label="Bids" value={user.bidsPlaced} />
-        <StatItem icon={<PercentageIcon />} label="Win Rate" value={`${user.winRate}%`} />
+        <StatItem icon={<PercentageIcon />} label="Wins" value={`${user.winRate}`} />
       </div>
       
        {/* Points */}

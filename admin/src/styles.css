@@ -93,3 +93,14 @@ body{
   .row{grid-template-columns:1fr;gap:8px}
   .cell{white-space:normal}
 }
+.status.won {
+  color: #ffd700;
+  font-weight: bold;
+}
+.status.completed {
+  color: #4caf50;
+  font-weight: bold;
+}
+.status.pending {
+  color: #999;
+}
