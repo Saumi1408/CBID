@@ -59,12 +59,12 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView }) => {
             isActive={currentView === DashboardView.Bidding}
             onClick={() => setCurrentView(DashboardView.Bidding)}
         />
-        <NavItem
+        {/* <NavItem
             icon={<AuctionIcon />}
             label="Auction"
             isActive={currentView === DashboardView.Auction}
             onClick={() => setCurrentView(DashboardView.Auction)}
-        />
+        /> */}
       </nav>
       <div className="mt-auto p-4 text-center text-slate-500 text-xs">
           <p>&copy; 2025 CodeBid Event. All rights reserved.</p>

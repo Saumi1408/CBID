@@ -46,9 +46,11 @@ const BiddingPage: React.FC<BiddingPageProps> = ({ teamName }) => {
   const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(dummyQuestions[0]);
   const [questions, setQuestions] = useState<Question[]>(dummyQuestions);
   const [bidAmount, setBidAmount] = useState<string>('');
+
 useEffect(() => {
   const bidsRef = collection(database, 'bids');
   const unsubscribe = onSnapshot(bidsRef, (snapshot) => {
+    console.log("🔥 Snapshot update detected: ", snapshot.docs.length);
     const allBids = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as FirestoreBid[];
 
     const updatedQuestions = dummyQuestions.map(q => {
@@ -63,9 +65,11 @@ useEffect(() => {
       if (closedBid) {
         // 🧠 Only the team that actually won sees the "You have won" message
         if (closedBid.teamName === teamName) {
-          status = 'bidding🎉 You have won the bid!';
+          status = 'biddingclosed:🎉 You have won the bid!';
+          //alert('biddingclosed:🎉 You have won the bid!');
         } else {
           status = 'Bidding Closed-you have lost the bid';
+          //alert('Bidding Closed-you have lost the bid');
         }
       } else if (latestMessageBid) {
         status = latestMessageBid.message || q.status;

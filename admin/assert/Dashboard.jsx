@@ -26,6 +26,7 @@ export default function Dashboard({ sendMessage }) {
   useEffect(() => {
     const bidsRef = collection(database, "bids");
     const unsubscribe = onSnapshot(bidsRef, (snapshot) => {
+      console.log("🔥 Snapshot update detected: ", snapshot.docs.length);
       const allBids = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data(),

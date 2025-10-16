@@ -21,8 +21,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ teamName }) => {
                 return <LeaderboardPage teamName={teamName} />;
             case DashboardView.Bidding:
                 return <BiddingPage teamName={teamName} />;
-            case DashboardView.Auction:
-                return <AuctionPage />;
+            // case DashboardView.Auction:
+            //     return <AuctionPage />;
             default:
                 return <DashboardContent setCurrentView={setCurrentView} />;
         }

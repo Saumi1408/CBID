@@ -84,7 +84,9 @@ const dummyUsersData: User[] = [
   { rank: 63, username: 'EtherX', lastActiveTime: '19:40', points: 0, wins: 0, bidsPlaced: 0, winRate: 0, streak: 0 },
   { rank: 64, username: 'CodeX', lastActiveTime: '19:38', points: 0, wins: 0, bidsPlaced: 0, winRate: 0, streak: 0 },
   { rank: 65, username: 'Infinity', lastActiveTime: '19:35', points: 0, wins: 0, bidsPlaced: 0, winRate: 0, streak: 0 },
-  { rank: 66, username: 'HackerX', lastActiveTime: '19:33', points: 0, wins: 0, bidsPlaced: 0, winRate: 0, streak: 0 }
+  { rank: 66, username: 'HackerX', lastActiveTime: '19:33', points: 0, wins: 0, bidsPlaced: 0, winRate: 0, streak: 0 },
+  { rank: 67, username: 'MicroCoder', lastActiveTime: '19:33', points: 0, wins: 0, bidsPlaced: 0, winRate: 0, streak: 0 },
+  { rank: 68, username: '', lastActiveTime: '19:33', points: 0, wins: 0, bidsPlaced: 0, winRate: 0, streak: 0 },
 ];
 
 const LeaderboardPage: React.FC<LeaderboardPageProps> = ({ teamName }) => {
@@ -100,7 +102,7 @@ const LeaderboardPage: React.FC<LeaderboardPageProps> = ({ teamName }) => {
 
       allBids.forEach((bid) => {
         if (!bid.teamName) return;
-        const team = bid.teamName.trim();
+        const team = bid.teamName.trim().toUpperCase();
 
         if (!teamStats[team]) {
           teamStats[team] = { points: 0, wins: 0, bidsPlaced: 0, lastActiveTime: '' };
@@ -125,7 +127,7 @@ const LeaderboardPage: React.FC<LeaderboardPageProps> = ({ teamName }) => {
 
       // Merge dummy data + Firestore stats
       const mergedUsers = dummyUsersData.map((user) => {
-        const stats = teamStats[user.username] || { points: 0, wins: 0, bidsPlaced: 0, lastActiveTime: user.lastActiveTime };
+        const stats = teamStats[user.username.toUpperCase()] || { points: 0, wins: 0, bidsPlaced: 0, lastActiveTime: user.lastActiveTime };
         const winRate = stats.bidsPlaced > 0 ? stats.wins : 0;
 
         return {

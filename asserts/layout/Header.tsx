@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ currentView, setCurrentView }) => {
         { label: 'Dashboard', view: DashboardView.Dashboard },
         { label: 'Leaderboard', view: DashboardView.Leaderboard },
         { label: 'Bidding', view: DashboardView.Bidding },
-        { label: 'Auction', view: DashboardView.Auction },
+        // { label: 'Auction', view: DashboardView.Auction },
     ]
   return (
     <header className="bg-slate-900/50 backdrop-blur-lg border-b border-slate-700/50 sticky top-0 z-50">
